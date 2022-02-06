@@ -1,0 +1,1 @@
+Serviço para consumir os eventos vindo do microsserviço integrations
