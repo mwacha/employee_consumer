@@ -7,14 +7,13 @@ on:
   pull_request:
     branches:
       - develop
-strategy:
-  matrix:
-    java: [ '11', '13' ]
 
 jobs:
   check-application:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        java: [ '11', '13']
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
