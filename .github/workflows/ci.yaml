@@ -1,0 +1,11 @@
+name: ci-workflow
+on: [push]
+jobs:
+  check-application:
+    runs-on: ubuntu-latest
+    steps:
+      - users: actions/checkout@v2
+      - users: actions/setup-java@v2
+        with:
+          java-version: 11
+      - run: java -cp Application
