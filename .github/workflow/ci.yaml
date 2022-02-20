@@ -1,12 +1,15 @@
-name: ci-workflow
 on: [push]
+
 jobs:
-  check-application:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
-      - name: Setup java
+      - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-      - run: java -cp java Application
+          distribution: 'adopt'
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
