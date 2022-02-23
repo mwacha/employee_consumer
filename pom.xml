@@ -20,7 +20,7 @@
         <amazon.sqs.jms.version>1.0.6</amazon.sqs.jms.version>
         <amazon.sdk.version>1.11.796</amazon.sdk.version>
         <start-class>tk.mwacha.Application</start-class>
-<!--        <plugin.flyway.schema>consumer_employee</plugin.flyway.schema>-->
+        <!--        <plugin.flyway.schema>consumer_employee</plugin.flyway.schema>-->
     </properties>
 
     <dependencies>
@@ -36,10 +36,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -73,10 +77,10 @@
             <artifactId>amazon-sqs-java-messaging-lib</artifactId>
             <version>${amazon.sqs.jms.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.flywaydb</groupId>-->
+        <!--            <artifactId>flyway-core</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -100,16 +104,28 @@
     </dependencies>
 
     <build>
+        <finalName>employee_consumer</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.flywaydb</groupId>-->
-<!--                <artifactId>flyway-maven-plugin</artifactId>-->
-<!--                <version>4.0.3</version>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.flywaydb</groupId>-->
+            <!--                <artifactId>flyway-maven-plugin</artifactId>-->
+            <!--                <version>4.0.3</version>-->
+            <!--            </plugin>-->
         </plugins>
+
+
     </build>
 </project>
